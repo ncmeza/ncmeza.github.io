@@ -6,18 +6,23 @@ $('.side-button-collapse').on("click", collapseSideBar)
 function collapseSideBar() {
     console.log(is_collapsed)
     if (!is_collapsed) {
-        is_collapsed = true
         $('.side-bar').css('width', '100px')
-        hideText()
+        hideOrShowElements(is_collapsed)
+        is_collapsed = true
     }
     else if (is_collapsed) {
+        $('.side-bar').css('width', '500px')
+        hideOrShowElements(is_collapsed)
         is_collapsed = false
-        $('.side-bar').css('width', '300px')
     }
 }
 
-function hideText() {
-    $('.pill-text').each(function () {
-        $(this).css('color', '#FFF')
-    })
+function hideOrShowElements(is_collapsed) {
+    if (!is_collapsed) {
+        $('.display-pill-wrapper').hide()
+        $('.main-icon').hide()
+    } else if (is_collapsed) {
+        $('.display-pill-wrapper').show()
+        $('.main-icon').show()
+    }
 }
