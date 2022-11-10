@@ -7,8 +7,9 @@ body {
 }
 
 .navbar {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     background-color: #D7F4D2;
+    box-shadow: 1px 1px #000;
 }
 
 .bd-placeholder-img {
@@ -166,4 +167,6 @@ body {
 .dashboard-header {
     padding: 10px;
     background-color: #FFF !important;
+    margin-bottom: 5px;
+    border-bottom: 1px #000 solid;
 }
