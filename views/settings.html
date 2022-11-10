@@ -140,14 +140,14 @@
                             month = date.getMonth() + 1;
                             day = date.getDate();
                             document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
-                            </script>
+                        </script>
                         <h4>Description:</h4>
 
                         <div class="textarea-container">
                             <textarea class="description-textarea" placeholder="Enter description here..."></textarea>
                         </div>
 
-                        <div class="variables-container">
+                        <div class="form-group">
                             <label>Water temperature:</label>
                             <input class="reference-value" type="number" min="1" max="100">
                             <label>Value range:</label>
@@ -170,13 +170,13 @@
                             <br>
                         </div>
                         <hr>
-                        <div class="settings-buttons">
-                            <input class="action-button" type="button" value="Confirm">
-                            <input class="action-button" type="button" value="Cancel">
+                        <div class="flex flex-direction-row">
+                            <input class="btn btn-success" type="button" value="Confirm">
+                            <input class="btn btn-primary" type="button" value="Cancel">
                         </div>
 
-                            
-                    </input>
+
+                        </input>
                     </div>
                 </div>
             </div>
