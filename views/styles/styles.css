@@ -7,8 +7,9 @@ body {
 }
 
 .navbar {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     background-color: #D7F4D2;
+    box-shadow: 1px 1px #000;
 }
 
 .bd-placeholder-img {
@@ -149,8 +150,6 @@ body {
     text-align: center;
 }
 
-.warm-header {}
-
 .warm-body {
     font-weight: bolder;
     font-size: 1.3rem;
@@ -166,4 +165,42 @@ body {
 .dashboard-header {
     padding: 10px;
     background-color: #FFF !important;
+    margin-bottom: 5px;
+    border-bottom: 1px #000 solid;
+}
+
+.settings-container {
+    height: 100%;
+    width: 100%;
+    background-color: #FFF;
+    padding-left: 50px;
+}
+
+.settings-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.textarea-container {
+    padding: 20px;
+}
+
+.description-textarea {
+    height: 100px;
+    width: 800px;
+}
+
+.variables-container input {
+    width: 70px;
+}
+
+.variables-container label {
+    font-weight: bold;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.settings-buttons {
+    border-radius: 5px;
+    width: 150px;
 }
