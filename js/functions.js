@@ -9,7 +9,7 @@ function collapseSideBar() {
         $('.side-bar').css('width', '100px')
         hideOrShowElements(is_collapsed)
         is_collapsed = true
-    }   else if (is_collapsed) {
+    } else if (is_collapsed) {
         $('.side-bar').css('width', '500px')
         hideOrShowElements(is_collapsed)
         is_collapsed = false
@@ -29,7 +29,7 @@ function hideOrShowElements(is_collapsed) {
     }
 }
 
-function getWidth(){
+function getWidth() {
     return $('.dashboard-body').width()
 }
 

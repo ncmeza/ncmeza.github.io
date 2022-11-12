@@ -170,3 +170,27 @@ body {
     margin-bottom: 5px;
     border-bottom: 1px #000 solid;
 }
+.settings-container{
+    display: flex;
+    flex-direction: column;
+}
+.settings-container-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.settings-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.settings-input{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    width: 100%;
+}
+.settings-row{
+    display: flex;
+    flex-direction: row;
+}
