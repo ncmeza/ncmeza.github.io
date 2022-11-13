@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <title>Home</title>
+    <title>Settings</title>
 </head>
 
 <body>
@@ -31,12 +31,12 @@
                     </li>
                 </ul>
                 <form role="search">
-                    <img src="assets/images/search.png" class="search-icon" alt="">
+                    <img src="../assets/images/search.png" class="search-icon" alt="">
                     <input class="search-field" type="search" placeholder="Search" aria-label="Search"
                         id="#search-field">
                 </form>
 
-                <img src="assets/images/user.png" alt="" class="image-pill pointer"
+                <img src="../assets/images/user.png" alt="" class="image-pill pointer"
                     style="width: 30px;border-radius: 10px;">
             </div>
         </div>
@@ -46,12 +46,11 @@
             <div class="side-bar">
                 <div class="side-bar-header">
                     <a class="side-button-collapse">
-                        <img src="assets/images/menu.png" alt="" class="image-pill pointer"
+                        <img src="../assets/images/menu.png" alt="" class="image-pill pointer"
                             style="width: 30px;border: 2px #0D8FEE solid;border-radius: 5px;">
                     </a>
                     <a>
-                        <img src="https://cdn-icons-png.flaticon.com/512/3522/3522643.png" alt=""
-                            class="image-pill main-icon" style="width: 30px;">
+                        <img src="../assets/images/" alt="" class="image-pill main-icon" style="width: 30px;">
                     </a>
                 </div>
                 <div class="side-bar-body">
@@ -59,7 +58,7 @@
                     <a href="" class="pill-text text-decoration-none">
                         <div class="side-pill">
                             <div class="image-pill-wrapper pill-hover">
-                                <img src="assets/images/thermometer.png" alt="" class="image-pill">
+                                <img src="../assets/images/thermometer.png" alt="" class="image-pill">
                             </div>
                             <div class="display-pill-wrapper pill-hover">
                                 Water Temperature
@@ -70,7 +69,7 @@
                     <a href="" class="pill-text text-decoration-none">
                         <div class="side-pill">
                             <div class="image-pill-wrapper pill-hover">
-                                <img src="assets/images/water-level.png" alt="" class="image-pill">
+                                <img src="../assets/images/water-level.png" alt="" class="image-pill">
                             </div>
                             <div class="display-pill-wrapper pill-hover">
                                 Water Level
@@ -81,7 +80,7 @@
                     <a href="" class="pill-text text-decoration-none">
                         <div class="side-pill">
                             <div class="image-pill-wrapper pill-hover">
-                                <img src="assets/images/ph.png" alt="" class="image-pill">
+                                <img src="../assets/images/ph.png" alt="" class="image-pill">
                             </div>
                             <div class="display-pill-wrapper pill-hover">
                                 Water PH
@@ -92,7 +91,7 @@
                     <a href="" class="pill-text text-decoration-none">
                         <div class="side-pill">
                             <div class="image-pill-wrapper pill-hover">
-                                <img src="assets/images/temp.png" alt="" class="image-pill">
+                                <img src="../assets/images/temp.png" alt="" class="image-pill">
                             </div>
                             <div class="display-pill-wrapper pill-hover">
                                 Room Temperature
@@ -100,10 +99,10 @@
                         </div>
                     </a>
 
-                    <a href="views/settings.html" class="pill-text text-decoration-none">
+                    <a href="" class="pill-text text-decoration-none">
                         <div class="side-pill">
                             <div class="image-pill-wrapper pill-hover">
-                                <img src="assets/images/settings.png" alt="" class="image-pill">
+                                <img src="../assets/images/settings.png" alt="" class="image-pill">
                             </div>
                             <div class="display-pill-wrapper pill-hover">
                                 Settings
@@ -117,7 +116,7 @@
                             Warm Inside
                         </div>
                         <div class="warm-body">
-                            21.8°C
+                            $temp_var
                         </div>
                     </div>
                 </div>
@@ -125,15 +124,71 @@
             <div class="dashboard">
                 <div class="dashboard-header">
                     <a>
-                        <img src="assets/images/plus-symbol-button.png" class="pointer"
+                        <img src="../assets/images/plus-symbol-button.png" class="pointer"
                             style="width: 20px;border: 2px #000 solid;border-radius: 5px; padding: 2px;">
                     </a>
                 </div>
-                <div class="dashboard-body">
-                    <div id="chart-container" style="height: 100%; width: 100%;"></div>
+                <div class="settings-container">
+                    <div class="settings-container-header">
+                        <p class="settings-title">Settings</p>
+                        <p id="current_date">YYYY-mm-dd</p>|
+                    </div>
+
+                    <div class="settings-form">
+                        <textarea class="description-textarea" placeholder="Enter description here..."
+                            rows="5"></textarea>
+                        <div class="settings-row">
+                            <div class="settings-input">
+                                <label>Water temperature</label>
+                                <input class="reference-value" type="number">
+                            </div>
+                            <div class="settings-input">
+                                <label>Value range</label>
+                                <input type="range" type="number" min="1" max="100">
+                            </div>
+                        </div>
+
+                        <div class="settings-row">
+                            <div class="settings-input">
+                                <label>Water level</label>
+                                <input class="reference-value" type="number" min="1" max="100">
+                            </div>
+                            <div class="settings-input">
+                                <label>Value range</label>
+                                <input type="range" type="number" min="1" max="100">
+                            </div>
+                        </div>
+
+                        <div class="settings-row">
+                            <div class="settings-input">
+                                <label>Water pH</label>
+                                <input class="reference-value" type="number" min="1" max="100">
+                            </div>
+                            <div class="settings-input">
+                                <label>Value range</label>
+                                <input type="range" type="number" min="1" max="100">
+                            </div>
+                        </div>
+
+                        <div class="settings-row">
+                            <div class="settings-input">
+                                <label>Room temperature</label>
+                                <input class="reference-value" type="number" min="1" max="100">
+                            </div>
+                            <div class="settings-input">
+                                <label>Value range</label>
+                                <input type="range" type="number" min="1" max="100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-direction-row">
+                    <input class="btn btn-success" type="button" value="Confirm">
+                    <input class="btn btn-primary" type="button" value="Cancel">
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -141,7 +196,7 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-    <script src="js/functions.js"></script>
+    <script src="../js/functions.js"></script>
 </body>
 
 </html>
