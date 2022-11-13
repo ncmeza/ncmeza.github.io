@@ -1,64 +1,40 @@
-<<<<<<< HEAD
-=======
 window.setInterval(function () {
     setTimeout(setWarm, 4000)
     clearInterval(this)
 })
 
->>>>>>> home-layout
 let is_collapsed = false
 //click events
 $('.side-button-collapse').on("click", collapseSideBar)
 
-<<<<<<< HEAD
-//functions
-=======
 //functions 
->>>>>>> home-layout
 function collapseSideBar() {
     console.log(is_collapsed)
     if (!is_collapsed) {
         $('.side-bar').css('width', '100px')
         hideOrShowElements(is_collapsed)
         is_collapsed = true
-<<<<<<< HEAD
-    }else if (is_collapsed) {
-=======
     } else if (is_collapsed) {
->>>>>>> home-layout
         $('.side-bar').css('width', '500px')
         hideOrShowElements(is_collapsed)
         is_collapsed = false
     }
-<<<<<<< HEAD
-=======
     //$('#chart-container').width(getWidth())
->>>>>>> home-layout
 }
 
 function hideOrShowElements(is_collapsed) {
     if (!is_collapsed) {
         $('.display-pill-wrapper').hide()
-<<<<<<< HEAD
-        $('.main-icon').hide()
-    } else if (is_collapsed) {
-        $('.display-pill-wrapper').show()
-=======
         $('.warm').hide()
         $('.main-icon').hide()
     } else if (is_collapsed) {
         $('.display-pill-wrapper').show()
         $('.warm').show()
->>>>>>> home-layout
         $('.main-icon').show()
     }
 }
 
-<<<<<<< HEAD
-function getWidth(){
-=======
 function getWidth() {
->>>>>>> home-layout
     return $('.dashboard-body').width()
 }
 
@@ -93,9 +69,6 @@ var options = {
         ]
     }]
 };
-<<<<<<< HEAD
-$("#chart-container").CanvasJSChart(options);
-=======
 $("#chart-container").CanvasJSChart(options);
 
 function setWarm() {
@@ -104,4 +77,3 @@ function setWarm() {
     $('.warm-body').text(temp_vars[i] + '°C')
     console.log('executed')
 }
->>>>>>> home-layout
