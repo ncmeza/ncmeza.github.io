@@ -1,3 +1,8 @@
+window.setInterval(function () {
+    setTimeout(setWarm, 4000)
+    clearInterval(this)
+})
+
 let is_collapsed = false
 //click events
 $('.side-button-collapse').on("click", collapseSideBar)
@@ -9,7 +14,7 @@ function collapseSideBar() {
         $('.side-bar').css('width', '100px')
         hideOrShowElements(is_collapsed)
         is_collapsed = true
-    }   else if (is_collapsed) {
+    } else if (is_collapsed) {
         $('.side-bar').css('width', '500px')
         hideOrShowElements(is_collapsed)
         is_collapsed = false
@@ -29,7 +34,7 @@ function hideOrShowElements(is_collapsed) {
     }
 }
 
-function getWidth(){
+function getWidth() {
     return $('.dashboard-body').width()
 }
 
@@ -65,3 +70,10 @@ var options = {
     }]
 };
 $("#chart-container").CanvasJSChart(options);
+
+function setWarm() {
+    let temp_vars = ['20.0', '23.3', '22.4', '24.6']
+    let i = 0
+    $('.warm-body').text(temp_vars[i] + '°C')
+    console.log('executed')
+}
