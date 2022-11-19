@@ -29,7 +29,9 @@ $('.display-pill-wrapper').on('click', function () {
     drawChart()
     compareValues(tag)
 })
-
+$('.btn-success').on('click', function () {
+    alert('Success: Values has been configured successfully')
+})
 
 
 //functions 
@@ -121,7 +123,7 @@ function getAxisValues(values) {
             data_points.push(point)
         }
     }
-    //console.log(data_points)
+
     return data_points
 }
 
