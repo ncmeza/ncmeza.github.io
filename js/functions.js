@@ -1,8 +1,5 @@
-/* window.setInterval(function () {
-    setTimeout(setWarm, 4000)
-    clearInterval(this)
-}) */
-
+$(window).on('load', initNotes)
+let notes = []
 let is_collapsed = false
 let limit_values = [{
     water_temp: {
@@ -26,18 +23,39 @@ let limit_values = [{
 $('.side-button-collapse').on("click", collapseSideBar)
 $('.display-pill-wrapper').on('click', function () {
     let tag = $(this).attr('id')
-    drawChart()
+    let options = defaultOptions()
+    options.title.text = getFormattedTitle(tag)
+    drawChart(options)
     compareValues(tag)
 })
 $('.btn-success').on('click', function () {
     alert('Success: Values has been configured successfully')
 })
 
-$('.medition-image').on('click', drawChart)
+$('.medition-image').on('click', function () {
+    drawChartBetweenDates($('#date_from').val(), $('#date_to').val(), $(this).attr('id'))
+})
 
+$('#print-btn').on('click', function () {
+    exportChart()
+})
+
+$('.notes').on('click', function () {
+    initNotes()
+})
+
+$('#create-btn').on('click', function () {
+    let title = $('#note-title')
+    let body = $('#note-body')
+    let author = $('#note-author')
+
+    createNote(title, body, author)
+
+    alert('Note created successfully!')
+})
 //functions 
 function collapseSideBar() {
-    console.log(is_collapsed)
+
     if (!is_collapsed) {
         $('.side-bar').css('width', '100px')
         hideOrShowElements(is_collapsed)
@@ -66,44 +84,16 @@ function getWidth() {
     return $('.dashboard-body').width()
 }
 
-function drawChart() {
-    var options = {
-        animationEnabled: true,
-        title: {
-            text: "Data"
-        },
-        axisX: {
-            title: "Time",
-            gridThickness: 2,
-            interval: 2,
-            intervalType: "hour",
-            valueFormatString: "hh TT K",
-            labelAngle: -20
-        },
-        axisY: {
-            title: "Values"
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    min: 0,
-                    max: 18,
-                    stepSize: 1,
+function drawChart(custom_options) {
 
-                    callback: function (value, index, values) {
-                        return '' + value;
-                    }
+    var options = {}
 
-                }
-            }]
-        },
-        data: [{
-            yValueFormatString: "$#,###",
-            xValueType: "dateTime",
-            type: "spline",
-            dataPoints: getAxisValues()
-        }]
-    };
+    if (custom_options == null) {
+        options = defaultOptions();
+    } else {
+        options = custom_options
+    }
+
     $("#chart-container").CanvasJSChart(options);
 }
 
@@ -111,7 +101,7 @@ function setWarm() {
     let temp_vars = ['20.0', '23.3', '22.4', '24.6']
     let i = 0
     $('.warm-body').text(temp_vars[i] + '°C')
-    console.log('executed')
+
 }
 
 function getAxisValues(values) {
@@ -145,7 +135,7 @@ function compareValues(tag) {
 
     if (max > getLimitValues(tag)) {
         $('#' + tag).css('background-color', 'red')
-        alert("WARNING " + tag + " exceed the limit value. Take appropiate measures. Limit: " + getLimitValues(tag) + ". Current value: " + max,)
+        alert("WARNING " + getFormattedTitle(tag) + " exceed the limit value. Take appropiate measures. Limit: " + getLimitValues(tag) + ". Current value: " + max,)
     }
 }
 
@@ -153,3 +143,127 @@ function getLimitValues(tag) {
     return limit_values[0][tag].max
 }
 
+function drawChartBetweenDates(from, to, tag) {
+
+    let options = defaultOptions()
+
+    options.scales.xAxes[0].ticks.suggestedMin = from
+    options.scales.xAxes[0].ticks.suggestedMax = to
+    options.axisX.title = "FROM: " + getFormattedDate(from) + " TO: " + getFormattedDate(to)
+
+    options.title.text = getFormattedTitle(tag)
+
+    drawChart(options)
+}
+
+function defaultOptions() {
+    return {
+        scales: {
+            xAxes: [{
+                display: true,
+                ticks: {
+                    suggestedMin: 0,
+                    suggestedMax: 0,
+                }
+            }]
+        },
+        animationEnabled: true,
+        type: 'line',
+        title: {
+            text: "Data"
+        },
+        axisX: {
+            title: "Time",
+            gridThickness: 1,
+            interval: 7,
+            intervalType: "hour",
+            valueFormatString: "",
+        },
+        axisY: {
+            title: "Values"
+        },
+        data: [{
+            yValueFormatString: "###",
+            xValueType: "dateTime",
+            type: "spline",
+            dataPoints: getAxisValues()
+        }]
+    }
+}
+
+function getFormattedTitle(tag) {
+
+    switch (tag) {
+        case 'water_temp':
+            return 'Water Temperature';
+            break;
+        case 'water_ph':
+            return 'Water PH';
+            break;
+        case 'water_level':
+            return 'Water Level';
+            break;
+        case 'room_temp':
+            return 'Room Temperature';
+            break;
+    }
+}
+
+function getFormattedDate(string_date) {
+    let date = new Date(string_date)
+
+    return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()
+}
+
+
+
+function exportChart() {
+    window.jsPDF = window.jspdf.jsPDF
+    var canvas = $('#chart-container .canvasjs-chart-canvas').get(0);
+    console.log(canvas)
+    var dataURL = canvas.toDataURL();
+    var pdf = new window.jspdf.jsPDF()
+    pdf.addImage(dataURL, 'JPEG', 0, 0);
+    pdf.save("download.pdf");
+}
+
+function initNotes() {
+    let lorem_ipsum = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    for (let i = 0; i < 5; i++) {
+        let note = {
+            title: "Note Title " + i,
+            body: lorem_ipsum,
+            author: 'Jhon Doe',
+            date: getFormattedDate("2022-11-23")
+        }
+
+        notes.push(note)
+    }
+    notes.push({
+        title: "Frutillas Tucuman",
+        body: "Como cultivar frutillas en Tucuman",
+        author: 'Leonel Lopez',
+        date: getFormattedDate("2022-11-23")
+    })
+    addRows()
+}
+
+function addRows() {
+    notes.splice(0, 1)
+    for (let i = 0; i < notes.length; i++) {
+        let row = '<tr><th scope="row">' + notes[i].title + '</th><td>' + notes[i].author + '</td><td>' + notes[i].date + '</td><td><input class="button-styles" type="button" value="Download"></td></tr>'
+        $(".table tbody").append(row);
+    }
+}
+
+function createNote(title, note, owner) {
+    let new_note = {
+        title: title,
+        body: note,
+        author: owner,
+        date: getFormattedDate("2022-11-23")
+    }
+
+    notes.push(new_note)
+    console.log(notes.length)
+}

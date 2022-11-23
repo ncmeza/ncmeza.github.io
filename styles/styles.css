@@ -392,8 +392,22 @@ body {
     margin-right: 15px;
 }
 
-.meditions-filters{
+.meditions-filters {
     display: flex;
     flex-direction: row;
-    justify-content:center;
+    justify-content: center;
+}
+
+.create-note,
+.dashboard-body {
+    width: 100%;
+}
+
+.button-styles {
+    color: #000;
+    border: 1px #000 solid;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #A7E99C;
+    padding: 5px;
 }
