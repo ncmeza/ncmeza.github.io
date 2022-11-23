@@ -33,6 +33,7 @@ $('.btn-success').on('click', function () {
     alert('Success: Values has been configured successfully')
 })
 
+$('.medition-image').on('click', drawChart)
 
 //functions 
 function collapseSideBar() {

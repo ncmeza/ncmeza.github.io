@@ -101,41 +101,36 @@
                             style="width: 20px;border: 2px #000 solid;border-radius: 100%; padding: 2px;">
                     </a>
                 </div>
-                <div class="buttons">
-                    <strong>From</strong>
-                        <input type="date" id="start" name="trip-start" value="">
-                    <strong>To</strong>
-                        <input type="date" id="start" name="trip-start" value="">
-                    <strong>Unit</strong>
-                        <select name="Dias" id="lang">
-                          <option value="Lunes">Lunes</option>
-                          <option value="Martes">Martes</option>
-                          <option value="Miercoles">Miercoles</option>
-                          <option value="Jueves">Jueves</option>
-                          <option value="Viernes">Viernes</option>
-                          <option value="Sabado">Sabado</option>
-                          <option value="Domingo">Domingo</option>
-                        </select>
-                    <br><br>&nbsp;
-                    <a>
-                        <img src="../assets/images/thermometer.png" class="pointer"
-                            style="width: 50px;border: 2px #000 solid;border-radius: 100%; padding: 2px;">
-                    </a>
-                    &nbsp;
-                    <a>
-                        <img src="../assets/images/ph.png" class="pointer"
-                            style="width: 50px;border: 2px #000 solid;border-radius: 100%; padding: 2px;">
-                    </a>
-                    &nbsp;
-                    <a>
-                        <img src="../assets/images/water-level.png" class="pointer"
-                            style="width: 50px;border: 2px #000 solid;border-radius: 100%; padding: 2px;">
-                    </a>
-                    &nbsp;
-                    <a>
-                        <img src="../assets/images/temp.png" class="pointer"
-                            style="width: 50px;border: 2px #000 solid;border-radius: 100%; padding: 2px;">
-                    </a>
+                <div class="dashboard-header">
+                    <div class="date-filters">
+                        <div class="col-md-4 mb-3" style="margin-right: 10px;">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="validationTooltipUsernamePrepend">From</span>
+                                </div>
+                                <input type="date" class="form-control" id="validationTooltipUsername"
+                                    placeholder="Username" aria-describedby="validationTooltipUsernamePrepend">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="validationTooltipUsernamePrepend">To</span>
+                                </div>
+                                <input type="date" class="form-control" id="validationTooltipUsername"
+                                    placeholder="Username" aria-describedby="validationTooltipUsernamePrepend">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meditions-filters">
+                        <img src="../assets/images/thermometer.png"
+                            class="image-pill-wrapper pill-hover pointer medition-image">
+                        <img src="../assets/images/ph.png" class="image-pill-wrapper pill-hover pointer medition-image">
+                        <img src="../assets/images/water-level.png"
+                            class="image-pill-wrapper pill-hover pointer medition-image">
+                        <img src="../assets/images/temp.png"
+                            class="image-pill-wrapper pill-hover pointer medition-image">
+                    </div>
                 </div>
                 <div class="dashboard-body">
                     <div id="chart-container" style="height:10%; width: 100%;"></div>
@@ -148,11 +143,11 @@
         </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//fFFFFF6V8Qbsw3"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
     <script src="../js/functions.js"></script>
 </body>
 
