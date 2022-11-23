@@ -28,7 +28,7 @@ $('.display-pill-wrapper').on('click', function () {
     drawChart(options)
     compareValues(tag)
 })
-$('.btn-success').on('click', function () {
+$('#save-settings').on('click', function () {
     alert('Success: Values has been configured successfully')
 })
 
